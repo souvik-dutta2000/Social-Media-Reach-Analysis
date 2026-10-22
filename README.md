@@ -136,3 +136,8 @@ The dataset is simulated, covers one account and one year, so results show patte
 The monthly targets are assumptions.
 Key Influencers shows association, not cause and effect.
 No audience demographics or content quality information is included.
+12. Future improvements
+Repeat the analysis on a real account export (Instagram and LinkedIn analytics).
+Add statistical tests to check whether differences between post types are significant.
+Build a model to predict reach from post type, time and hashtags.
+Schedule the refresh with a data gateway.
