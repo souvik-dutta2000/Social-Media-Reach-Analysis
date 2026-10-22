@@ -87,3 +87,35 @@ Plan big campaigns for Oct-Dec on Instagram and Sep-Nov on LinkedIn; expect a sl
 7. Dashboard
 
 The Power BI report has 5 pages: Home, Overview, Content, Timing, AI Insights.
+Page	What it answers
+Home	Cover page with headline numbers and navigation cards
+Overview	KPIs, monthly reach vs target, platform scoreboard, best time to post, top posts
+Content	Which post types and categories reach and engage most; reach vs engagement; follower growth
+Timing	Day and hour heatmaps, hashtags, paid vs organic
+AI Insights	Key Influencers, Decomposition Tree, Smart Narrative, validated recommendations
+8. Repository structure
+Social-Media-Reach-Analysis/
+├── README.md
+├── data/
+│   ├── Social_Media_Reach_Dataset.xlsx     # raw data (Excel)
+│   ├── Instagram_Posts_raw.csv             # raw data for SQL import
+│   ├── LinkedIn_Posts_raw.csv
+│   └── Integration_Tables.xlsx             # Dim_Platform, Targets, AI_Recommendations
+├── sql/
+│   └── SocialMedia_Reach_Analysis.sql      # cleaning, view, 12 analysis queries
+├── powerbi/
+│   ├── SocialMedia_Reach_Dashboard.pbix
+│   └── SocialMedia_Dark_Theme.json
+├── images/                                 # logo, banner, architecture diagram
+├── screenshots/                            # real dashboard screenshots
+└── docs/                                   # optional guides
+9. How to run
+
+Requirements: Microsoft Excel, SQL Server (Express or Developer) with SSMS, Power BI Desktop.
+
+Excel: open data/Social_Media_Reach_Dataset.xlsx to explore and clean the data.
+SQL Server:
+Create the database SocialMediaReach.
+Import Instagram_Posts_raw.csv and LinkedIn_Posts_raw.csv with Import Flat File (table names Instagram_Posts_raw and LinkedIn_Posts_raw).
+Run sql/SocialMedia_Reach_Analysis.sql block by block.
+Check: 5,000 posts per platform in Posts_Clean.
