@@ -119,3 +119,9 @@ Create the database SocialMediaReach.
 Import Instagram_Posts_raw.csv and LinkedIn_Posts_raw.csv with Import Flat File (table names Instagram_Posts_raw and LinkedIn_Posts_raw).
 Run sql/SocialMedia_Reach_Analysis.sql block by block.
 Check: 5,000 posts per platform in Posts_Clean.
+Power BI:
+Open powerbi/SocialMedia_Reach_Dashboard.pbix.
+Change the data source to your SQL Server (Home > Transform data > Data source settings) and point the Excel source to data/Integration_Tables.xlsx.
+Click Refresh.
+Reconcile: Total Posts 10,000, Total Reach 143.5M, Engagement Rate 5.21%, Followers Gained 384.7K.
+10. Skills demonstrated
