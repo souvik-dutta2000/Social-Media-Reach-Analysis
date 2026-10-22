@@ -35,3 +35,52 @@ Columns	19 (Post_ID, Platform, Post_Date, Post_Time, Post_Type, Content_Category
 Instagram post types	Reel, Carousel, Image, Story
 LinkedIn post types	Text, Image, Document, Video, Poll, Article
 Extra tables (Excel)	Dim_Platform (platform pictures), Targets (assumed monthly reach targets), AI_Recommendations
+Deliberate data quality problems (cleaned in Excel and SQL):
+
+25 duplicate rows per platform
+About 50 blank Hashtag_Count and 40 blank Caption_Length values per platform
+About 75 inconsistent Post_Type labels per platform (for example reel  and CAROUSEL)
+3. Architecture
+<p align="center"> <img src="images/Project_Architecture.png" alt="Project architecture: Excel, SQL Server, Power BI, AI" width="90%"> </p>
+
+Each tool has one job:
+
+Tool	Job
+Excel	Explore and clean the data, build pivots and a forecast, keep small business tables (targets, platform pictures, AI notes)
+SQL Server	Repeatable cleaning pipeline, analysis view vw_posts, 12 analysis queries
+Power BI	Data model, DAX measures, 5-page dashboard
+AI	Power BI AI visuals plus AI-drafted recommendations, validated against SQL
+4. Workflow
+Step 1: Excel (explore and clean)
+Converted both sheets into Tables, removed duplicates, standardised Post_Type with PROPER(TRIM()), filled blanks with the median.
+Added helper columns: Engagements, Engagement Rate, Reach Rate, Post Hour, Day Name, Month, Hashtag Band.
+Built PivotTables (with a calculated field so engagement rate is SUM of engagements / SUM of reach), charts and an Excel Forecast Sheet.
+Step 2: SQL Server (clean pipeline and analysis)
+Imported both CSV files and profiled the raw data.
+Built Posts_Clean using UNION ALL, a CTE with ROW_NUMBER() to remove duplicates, text fixing and NULL handling.
+Created the view vw_posts (engagements, engagement rate, hour, day, month, hashtag band, time band and an Above_Avg_ER flag).
+Wrote 12 analysis queries using GROUP BY, RANK, ROW_NUMBER, LAG (month-over-month growth), running totals with SUM() OVER, CASE and window averages.
+Reconciled the totals with Excel and Power BI.
+Step 3: Power BI (model, DAX, dashboard)
+Data model: Posts (SQL view) + Dim_Date + Dim_Platform + Targets (Excel), connected with one-to-many relationships.
+DAX measures: Total Reach, Impressions, Engagements, Engagement Rate, Avg Reach per Post, Reach MoM %, Paid Reach Lift, Target Reach, Reach vs Target %, and more.
+Dark professional theme, Instagram in pink and LinkedIn in blue throughout, platform pictures inside the report, page navigation, bookmarks and drill-through.
+Step 4: AI
+Key Influencers (which factors raise the chance of above-average engagement), Decomposition Tree and Smart Narrative.
+Used an AI assistant to draft insights and recommendations from the SQL results, then checked every number against SQL before using it (see the AI_Recommendations sheet).
+5. Key findings
+Area	Finding
+Overall	Instagram reach 86.8M vs LinkedIn 56.7M. Engagement rate 5.51% vs 4.74%
+Instagram content	Reels average about 27.3K reach, about 2.3x Images, and bring about 77% of follower gains. Carousels have the highest engagement rate (about 8.0%). Stories are weakest (about 2.1%)
+LinkedIn content	Documents have the highest engagement rate (about 6.6%). Polls have the highest reach (about 17.7K). Articles are weakest (about 2.3%)
+Timing	Instagram: evenings (7-9 PM), strongest on weekends. LinkedIn: Tue-Thu, 8-10 AM; weekends are weak
+Seasonality	Instagram peaks Oct-Dec. LinkedIn peaks Sep-Nov and is weakest in December
+Hashtags	Instagram: 6-10 works best. LinkedIn: 3-5 works best
+Paid promotion	Adds about +61% reach on Instagram and +48% on LinkedIn, but lowers engagement rate (Instagram 4.9% vs 5.7%, LinkedIn 4.2% vs 4.8%)
+Categories	Instagram: Education (about 6.9%) and Business (about 6.3%) engage best. LinkedIn: Career Tips (about 5.5%) best, Product Updates (about 3.4%) worst
+Targets (assumed)	Instagram reached about 108% of its reach target, LinkedIn about 97%
+6. Recommendations
+Instagram: use Reels for growth and Carousels for engagement; post in the evening, especially on weekends; use 6-10 hashtags.
+LinkedIn: lead with Documents and Polls; post Tuesday to Thursday, 8-10 AM; use 3-5 hashtags; avoid long Articles.
+Use paid promotion for reach goals (launches), not for engagement goals.
+Plan big campaigns for Oct-Dec on Instagram and Sep-Nov on LinkedIn; expect a slow December on LinkedIn.
