@@ -125,3 +125,14 @@ Change the data source to your SQL Server (Home > Transform data > Data source s
 Click Refresh.
 Reconcile: Total Posts 10,000, Total Reach 143.5M, Engagement Rate 5.21%, Followers Gained 384.7K.
 10. Skills demonstrated
+Area	Skills
+Excel	Tables, data cleaning, formulas (PROPER, TRIM, MEDIAN, HOUR, TEXT, IF), PivotTables with calculated fields, charts, Forecast Sheet
+SQL	CTEs, ROW_NUMBER, RANK, LAG, running totals, CASE, UNION ALL, views, NULL handling, profiling
+Power BI	Star schema, multi-source model (SQL + Excel), DAX, theme and layout, platform pictures, navigation, bookmarks, drill-through
+AI	Key Influencers, Decomposition Tree, Smart Narrative, AI-drafted insights validated against SQL
+Business	KPI design, reach vs engagement thinking, actionable recommendations
+11. Limitations
+The dataset is simulated, covers one account and one year, so results show patterns in this data, not proof for any real brand.
+The monthly targets are assumptions.
+Key Influencers shows association, not cause and effect.
+No audience demographics or content quality information is included.
