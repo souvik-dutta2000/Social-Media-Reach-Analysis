@@ -84,3 +84,6 @@ Instagram: use Reels for growth and Carousels for engagement; post in the evenin
 LinkedIn: lead with Documents and Polls; post Tuesday to Thursday, 8-10 AM; use 3-5 hashtags; avoid long Articles.
 Use paid promotion for reach goals (launches), not for engagement goals.
 Plan big campaigns for Oct-Dec on Instagram and Sep-Nov on LinkedIn; expect a slow December on LinkedIn.
+7. Dashboard
+
+The Power BI report has 5 pages: Home, Overview, Content, Timing, AI Insights.
