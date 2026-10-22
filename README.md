@@ -148,4 +148,3 @@ Souvik Dutta | Data Analyst (Fresher) | Kolkata, India
 LinkedIn: linkedin.com/in/souvik-dutta-6a4159257
 Email: souvikduttaofficial29@gmail.com
 
-If you found this project useful, feel free to star the repository.
